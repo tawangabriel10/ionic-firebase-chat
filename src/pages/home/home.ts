@@ -1,3 +1,4 @@
+import { AuthService } from './../../providers/auth.service';
 import { SignupPage } from './../signup/signup';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -14,10 +15,15 @@ export class HomePage {
   users: FirebaseListObservable<User[]>;
 
   constructor(
+    public authService: AuthService,
     public userService: UserService,
     public navCtrl: NavController
   ) {
     
+  }
+
+  ionViewCanEnter(): Promise<boolean> {
+    return this.authService.authenticated;
   }
 
   ionViewDidLoad() {

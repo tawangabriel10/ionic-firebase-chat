@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 
 import 'rxjs/add/operator/first';
 
+import { HomePage } from './../home/home';
 import { AuthService } from '../../providers/auth.service';
 import { UserService } from './../../providers/user.service';
 
@@ -56,7 +57,9 @@ export class SignupPage {
           
                 this.userService.create(formUser)
                   .then(() => {
+
                     console.log('Usuario cadastrado com sucesso!');
+                    this.navCtrl.setRoot(HomePage);
                     loading.dismiss();
                   }).catch((error: any) => {
                     console.log(error);

@@ -8,8 +8,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { AuthService } from '../providers/auth.service';
-import { MyApp } from './app.component';
+import { CapitalizePipe } from './../pipes/capitalize.pipe';
+import { ChatPage } from './../pages/chat/chat';
+import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 import { HomePage } from '../pages/home/home';
+import { MyApp } from './app.component';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { UserService } from '../providers/user.service';
@@ -29,10 +32,13 @@ const firebaseAuthConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
+    CapitalizePipe,
+    ChatPage,
+    CustomLoggedHeaderComponent,
     HomePage,
-    SignupPage,
-    SigninPage
+    MyApp,
+    SigninPage,
+    SignupPage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
@@ -42,10 +48,11 @@ const firebaseAuthConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    ChatPage,
     HomePage,
-    SignupPage,
-    SigninPage
+    MyApp,
+    SigninPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

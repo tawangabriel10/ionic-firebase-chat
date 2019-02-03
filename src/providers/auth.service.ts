@@ -32,7 +32,7 @@ export class AuthService extends BaseService {
   logout(): Promise<void> {
     return this.auth.logout();
   }
-  
+
   get authenticated(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.auth

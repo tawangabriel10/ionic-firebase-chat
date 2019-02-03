@@ -1,3 +1,4 @@
+import { ChatPage } from './../chat/chat';
 import { AuthService } from './../../providers/auth.service';
 import { SignupPage } from './../signup/signup';
 import { Component } from '@angular/core';
@@ -13,6 +14,7 @@ import { UserService } from '../../providers/user.service';
 export class HomePage {
 
   users: FirebaseListObservable<User[]>;
+  view: string = "chats";
 
   constructor(
     public authService: AuthService,
@@ -35,7 +37,9 @@ export class HomePage {
   }
 
   onChatCreate(user: User): void {
-
+    this.navCtrl.push(ChatPage, {
+      recipientUser: user
+    });
   }
 
 }

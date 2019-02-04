@@ -68,12 +68,12 @@ export class SigninPage {
   }
 
   onHomePage(): void {
-    this.navCtrl.push(HomePage)
+    this.navCtrl.push(HomePage);/*
       .then((hasAccess: boolean) => {
 
       }).catch((error: any) => {
         
-      });
+      });*/
   }
 
   onLogout(): void {

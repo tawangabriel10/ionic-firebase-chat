@@ -3,7 +3,7 @@ export class Chat {
 
     constructor(
         public lastMessage: string,
-        public timestamp: number,
+        public timestamp: any,
         public title: string,
         public photo: string
     ) {

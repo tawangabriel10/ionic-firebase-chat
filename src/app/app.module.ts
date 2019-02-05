@@ -16,7 +16,7 @@ import { MyApp } from './app.component';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { UserService } from '../providers/user.service';
-import { ChatProvider } from '../providers/chat.service';
+import { ChatService } from '../providers/chat.service';
 
 const firebaseConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyByARxGM_H8obBudC2wymar8SJuZMuUCJs",
@@ -57,7 +57,7 @@ const firebaseAuthConfig = {
   ],
   providers: [
     AuthService, 
-    ChatProvider,
+    ChatService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 

@@ -20,7 +20,10 @@
   <div [ngSwitch]="view">
 
     <ion-icon *ngSwitchCase="'chats'" no-lines>
-      <ion-item>Chats</ion-item>
+      <button ion-item *ngFor="let c of chats | async">
+        <h2>{{ c.title }}</h2>
+        <p *ngIf="c.lastMessage">{{ c.timestamp | date: 'dd:MM:y H:mm' }} = {{ c.lastMessage }}</p>
+      </button>
     </ion-icon>
 
     <ion-list *ngSwitchCase="'users'" no-lines>

@@ -10,13 +10,15 @@ import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from
 import { AuthService } from '../providers/auth.service';
 import { CapitalizePipe } from './../pipes/capitalize.pipe';
 import { ChatPage } from './../pages/chat/chat';
+import { ChatService } from '../providers/chat.service';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 import { HomePage } from '../pages/home/home';
+import { MessageBoxComponent } from '../components/message-box/message-box.component';
+import { MessageService } from '../providers/message.service';
 import { MyApp } from './app.component';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { UserService } from '../providers/user.service';
-import { ChatService } from '../providers/chat.service';
 
 const firebaseConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyByARxGM_H8obBudC2wymar8SJuZMuUCJs",
@@ -37,6 +39,7 @@ const firebaseAuthConfig = {
     ChatPage,
     CustomLoggedHeaderComponent,
     HomePage,
+    MessageBoxComponent,
     MyApp,
     SigninPage,
     SignupPage
@@ -58,10 +61,11 @@ const firebaseAuthConfig = {
   providers: [
     AuthService, 
     ChatService,
+    MessageService, 
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
-    UserService, 
+    UserService
   ]
 })
 export class AppModule {}

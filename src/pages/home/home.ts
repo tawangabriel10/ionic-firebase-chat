@@ -40,6 +40,35 @@ export class HomePage {
     this.chats = this.chatService.chats;
   }
 
+  filterItems(event: any): void {
+    let searchTerm = event.target.value;
+
+    this.chats = this.chatService.chats;
+    this.users = this.userService.users;
+
+    if (searchTerm) {
+      switch(this.view) {
+        case 'chats':
+          this.chats = <FirebaseListObservable<Chat[]>>this.chats
+            .map((chats: Chat[]) => {
+              return chats.filter((chat: Chat) => {
+                return (chat.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+              });
+            });
+          break;
+
+        case 'users':
+          this.users = <FirebaseListObservable<User[]>>this.users
+            .map((users: User[]) => {
+              return users.filter((user: User) => {
+                return (user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+              });
+            });
+            break;
+      }
+    }
+  }
+
   onSignup(): void {
     this.navCtrl.push(SignupPage);
   }
@@ -67,6 +96,19 @@ export class HomePage {
     this.navCtrl.push(ChatPage, {
       recipientUser: recipientUser
     });
+  }
+
+  onChatOpen(chat: Chat): void {
+    let recipienteUser: string = chat.$key;
+
+    this.userService.get(recipienteUser)
+      .first()
+      .subscribe((user: User) => {
+
+        this.navCtrl.push(ChatPage, {
+          recipientUser: user
+        });
+      });
   }
 
 }

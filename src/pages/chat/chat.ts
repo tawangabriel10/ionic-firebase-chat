@@ -42,6 +42,7 @@ export class ChatPage {
 
   ionViewDidLoad() {
     this.recipient = this.navParams.get('recipientUser');
+    console.log(this.recipient);
     this.pageTitle = this.recipient.name;
     this.userService.currentUser
       .first()

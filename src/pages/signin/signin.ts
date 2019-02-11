@@ -34,10 +34,12 @@ export class SigninPage {
   onSubmit(): void {
     let loading = this.showLoading();
 
+    console.log(this.signinForm.value);
+
     this.authService.signWithEmail(this.signinForm.value)
       .then((isLogged: boolean) => {
         if (isLogged) {
-          this.navCtrl.setRoot(HomePage);
+          //this.navCtrl.setRoot(HomePage);
           loading.dismiss();
         }
       }).catch((error: any) => {

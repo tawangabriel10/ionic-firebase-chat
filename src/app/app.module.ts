@@ -18,6 +18,8 @@ import { MessageService } from '../providers/message.service';
 import { MyApp } from './app.component';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
+import { UserInfoComponent } from '../components/user-info/user-info.component';
+import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 import { UserService } from '../providers/user.service';
 
 const firebaseConfig: FirebaseAppConfig = {
@@ -42,7 +44,9 @@ const firebaseAuthConfig = {
     MessageBoxComponent,
     MyApp,
     SigninPage,
-    SignupPage
+    SignupPage,
+    UserInfoComponent,
+    UserMenuComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),

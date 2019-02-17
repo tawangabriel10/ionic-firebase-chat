@@ -68,16 +68,4 @@ export class SigninPage {
     }).present();
   }
 
-  onHomePage(): void {
-    this.navCtrl.push(HomePage);/*
-      .then((hasAccess: boolean) => {
-
-      }).catch((error: any) => {
-        
-      });*/
-  }
-
-  onLogout(): void {
-    this.authService.logout();
-  }
 }

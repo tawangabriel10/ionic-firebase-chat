@@ -17,6 +17,7 @@ import { Chat } from '../../models/chat.model';
   templateUrl: 'chat.html',
 })
 export class ChatPage {
+
   @ViewChild(Content) content: Content; 
 
   messages: FirebaseListObservable<Message[]>;
@@ -42,25 +43,32 @@ export class ChatPage {
 
   ionViewDidLoad() {
     this.recipient = this.navParams.get('recipientUser');
-    console.log(this.recipient);
     this.pageTitle = this.recipient.name;
+
     this.userService.currentUser
       .first()
       .subscribe((currentUser: User) => {
         this.sender = currentUser;
 
-        this.messages = this.messageService
-          .getMessages(this.sender.$key, this.recipient.$key);
-
         this.chat1 = this.chatService.getDeepChat(this.sender.$key, this.recipient.$key);
         this.chat2 = this.chatService.getDeepChat(this.recipient.$key, this.sender.$key);
+
+        this.chat1
+          .first()
+          .subscribe((chat: Chat) => {
+            this.chatService.updatePhoto(this.chat1, chat.photo, this.recipient.photo);
+          });
 
         let doSubscription = () => {
           this.messages
             .subscribe((messages: Message[]) => {
-              this.scrollToBottom();
+
+              this.scrollToBottomChat(300);
             });
         };
+
+        this.messages = this.messageService
+          .getMessages(this.sender.$key, this.recipient.$key);
 
         this.messages
           .first()
@@ -100,7 +108,7 @@ export class ChatPage {
     }
   }
 
-  private scrollToBottom(duration?: number): void {
+  private scrollToBottomChat(duration?: number): void {
     setTimeout(() => {
       if (this.content) {
         this.content.scrollToBottom(duration || 300);

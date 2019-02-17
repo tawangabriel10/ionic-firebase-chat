@@ -30,7 +30,11 @@ export class MyApp {
         if (authState) {
           userService.currentUser
             .subscribe((user: User) => {
-              this.currentUser = user;
+             /* console.log('USUARIO LOGADO MENU');
+              console.log(user);
+              console.log('USUARIO LOGADO MENU');*/
+
+              //this.currentUser = user;
             });
         }
       });

@@ -37,7 +37,7 @@ export class SignupPage {
     });
   }
 
-  onSumit():void {
+  onCreateUser():void {
     let loading: Loading = this.showLoading();
     let formUser = this.signupForm.value;
     let username: string = formUser.username;
@@ -54,6 +54,7 @@ export class SignupPage {
           
                 delete formUser.password;
                 let uuid: string = authState.auth.uid;
+                formUser.uid = uuid;
           
                 this.userService.create(formUser, uuid)
                   .then(() => {

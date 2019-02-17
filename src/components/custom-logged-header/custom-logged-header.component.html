@@ -1,8 +1,22 @@
 <!-- Generated template for the CustomLoggedHeaderComponent component -->
 <ion-navbar>
 
+  <button ion-button menuToggle="user-menu">
+    <ion-icon name="menu"></ion-icon>
+  </button>
+
   <ion-title>
-    {{title}}
+
+    <ion-item detail-none no-lines color="transparent" *ngIf="user; else titleTemplate">
+      <ion-avatar item-left>
+        <img [src]="user.photo || 'assets/images/no-photo.jpg'">
+      </ion-avatar>
+      {{ title }}
+    </ion-item>
+
+    <ng-template #titleTemplate>
+      {{title}}
+    </ng-template>
   </ion-title>
 
   <ion-buttons end>

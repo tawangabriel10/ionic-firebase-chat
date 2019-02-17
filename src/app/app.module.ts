@@ -16,10 +16,12 @@ import { HomePage } from '../pages/home/home';
 import { MessageBoxComponent } from '../components/message-box/message-box.component';
 import { MessageService } from '../providers/message.service';
 import { MyApp } from './app.component';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar.component';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 import { UserInfoComponent } from '../components/user-info/user-info.component';
 import { UserMenuComponent } from '../components/user-menu/user-menu.component';
+import { UserProfilePage } from './../pages/user-profile/user-profile';
 import { UserService } from '../providers/user.service';
 
 const firebaseConfig: FirebaseAppConfig = {
@@ -43,10 +45,12 @@ const firebaseAuthConfig = {
     HomePage,
     MessageBoxComponent,
     MyApp,
+    ProgressBarComponent,
     SigninPage,
     SignupPage,
     UserInfoComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    UserProfilePage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
@@ -60,7 +64,8 @@ const firebaseAuthConfig = {
     HomePage,
     MyApp,
     SigninPage,
-    SignupPage
+    SignupPage,
+    UserProfilePage
   ],
   providers: [
     AuthService, 

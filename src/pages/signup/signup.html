@@ -19,7 +19,7 @@
     <ion-icon class="auth-icon" name="person-add" color="primary"></ion-icon>
   </h1>
 
-  <form [formGroup]="signupForm" (ngSubmit)="onSumit(); $event.preventDefault()">
+  <form [formGroup]="signupForm">
 
     <ion-item>
       <ion-icon name="person" item-left color="primary"></ion-icon>
@@ -42,7 +42,7 @@
     </ion-item>
 
     <br>
-    <button ion-button full type="submit" [disabled]="signupForm.invalid">Create Account</button>
+    <button ion-button full type="submit" [disabled]="signupForm.invalid" (click)="onCreateUser()">Create Account</button>
 
   </form>
 

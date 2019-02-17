@@ -4,6 +4,7 @@ import { Component, Input } from '@angular/core';
 import { AuthService } from './../../providers/auth.service';
 import { BaseComponent } from '../base.component';
 import { User } from './../../models/user.model';
+import { UserProfilePage } from './../../pages/user-profile/user-profile';
 
 @Component({
   selector: 'user-menu',
@@ -23,6 +24,6 @@ export class UserMenuComponent extends BaseComponent {
   }
 
   onProfile(): void {
-    
+    this.navCtrl.push(UserProfilePage);
   }
 }

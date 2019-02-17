@@ -31,15 +31,14 @@ export class SigninPage {
     });
   }
 
-  onSubmit(): void {
+  onLogin(): void {
     let loading = this.showLoading();
+    let formUser = this.signinForm.value;
 
-    console.log(this.signinForm.value);
-
-    this.authService.signWithEmail(this.signinForm.value)
+    this.authService.signWithEmail(formUser)
       .then((isLogged: boolean) => {
         if (isLogged) {
-          //this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot(HomePage);
           loading.dismiss();
         }
       }).catch((error: any) => {

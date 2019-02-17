@@ -1,8 +1,10 @@
 import { App, MenuController } from 'ionic-angular';
-import { AuthService } from './../../providers/auth.service';
 import { AlertController } from 'ionic-angular';
 import { Component, Input } from '@angular/core';
+
+import { AuthService } from './../../providers/auth.service';
 import { BaseComponent } from '../base.component';
+import { User } from './../../models/user.model';
 
 @Component({
   selector: 'custom-logged-header',
@@ -11,6 +13,7 @@ import { BaseComponent } from '../base.component';
 export class CustomLoggedHeaderComponent extends BaseComponent {
 
   @Input() title: string;
+  @Input() user: User;
 
   constructor(
     public alertCtrl: AlertController,
@@ -19,8 +22,7 @@ export class CustomLoggedHeaderComponent extends BaseComponent {
     public menuCtrl: MenuController
   ) {
     super(alertCtrl, authService, app, menuCtrl);
-    console.log('Hello CustomLoggedHeaderComponent Component');
-    this.title = 'Hello World';
+    this.title = 'Chats';
   }
 
 }

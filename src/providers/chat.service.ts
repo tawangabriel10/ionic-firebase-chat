@@ -48,4 +48,15 @@ export class ChatService extends BaseService {
       .catch(this.handleObservableError);
   }
 
+  updatePhoto(chat: FirebaseObjectObservable<Chat>, chatPhoto: string, recipientUserPhoto: string): firebase.Promise<boolean> {
+    if (chatPhoto != recipientUserPhoto) {
+      return chat.update({
+        photo: recipientUserPhoto
+      }).then(() => {
+        return true;
+      }).catch(this.handlePromiseError);
+    }
+    return Promise.resolve(false);
+  }
+
 }
